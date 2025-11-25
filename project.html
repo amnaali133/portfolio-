@@ -1,12 +1,349 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects & Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL STYLES (MATCHING PAGE 1) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #050505;
+            color: white;
+            line-height: 1.6;
+        }
+
+        :root {
+            --neon: #00f3ff;
+            --navy: #0a192f;
+            --light-navy: #112240;
+            --white: #e6f1ff;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: rgba(10, 25, 47, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--neon);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon);
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--white);
+            border-left: 5px solid var(--neon);
+            padding-left: 20px;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--light-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid #333;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 180px;
+            background-color: #333;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            color: var(--neon);
+            margin-bottom: 10px;
+        }
+
+        .tech-stack {
+            font-size: 0.8rem;
+            color: #8892b0;
+            margin-bottom: 15px;
+            font-family: monospace;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- EXPERIENCE & SKILLS --- */
+        .split-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .half-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .exp-item {
+            border-left: 2px solid var(--neon);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .skill-tags span {
+            display: inline-block;
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon);
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--neon);
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact {
+            text-align: center;
+            background-color: #020c1b;
+            padding: 100px 20px;
+            margin-top: 50px;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: #8892b0;
+            margin-bottom: 30px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 2rem;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--neon);
+            transform: scale(1.1);
+        }
+
+        .btn-large {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid var(--neon);
+            color: var(--neon);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-large:hover {
+            background: rgba(0, 243, 255, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #050505;
+            color: #8892b0;
+        }
+    </style>
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+    <nav>
+        <div class="logo">PORTFOLIO</div>
+        <ul class="nav-links">
+            <li><a href="about me.html">About Me</a></li>
+            <li><a href="project.html" style="color:var(--neon)">Projects & Skills</a></li>
+            <li><a href="about me.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">02. My Projects</h2>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://placehold.co/600x400/112240/00f3ff?text=Portfolio+Site" alt="Project 1">
+                </div>
+                <div class="card-content">
+                    <h3>Poster</h3>
+                    <p class="tech-stack">Canva</p>
+                    <p>A static two-page portfolio website designed to showcase personal skills and projects with a neon theme.</p>
+                    <br>
+            
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://placehold.co/600x400/112240/00f3ff?text=Calculator+App" alt="Project 2">
+                </div>
+                <div class="card-content">
+                    <h3>Calculator App</h3>
+                    <p class="tech-stack">JavaScript - HTML - CSS</p>
+                    <p>A functional calculator allowing basic arithmetic operations with a dark mode toggle.</p>
+                    <br>
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://placehold.co/600x400/112240/00f3ff?text=Login+Form" alt="Project 3">
+                </div>
+                <div class="card-content">
+                    <h3>Login Form UI</h3>
+                    <p class="tech-stack">HTML - CSS - Animations</p>
+                    <p>A responsive login page with glassmorphism effects and input validation styling.</p>
+                    <br>
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> View Code</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="container">
+        <div class="split-section">
+            
+            <div class="half-box">
+                <h2 class="section-title">03. Experience</h2>
+                <div class="exp-item">
+                    <h3>Frontend Developer Intern</h3>
+                    <p style="color:var(--neon)">Tech Solutions Inc.</p>
+                    <p><small>June 2024 - Present</small></p>
+                    <br>
+                    <p>Assisted in developing responsive webpages and fixing bugs in the UI using HTML, CSS, and JS.</p>
+                </div>
+                <div class="exp-item">
+                    <h3>Freelance Web Designer</h3>
+                    <p style="color:var(--neon)">Self-Employed</p>
+                    <p><small>Jan 2023 - May 2024</small></p>
+                    <br>
+                    <p>Created landing pages for small local businesses to help establish their online presence.</p>
+                </div>
+            </div>
+
+            <div class="half-box">
+                <h2 class="section-title">04. Skills</h2>
+                <p>Here are a few technologies I've been working with recently:</p>
+                <br>
+                <div class="skill-tags">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>Git & GitHub</span>
+                    <span>VS Code</span>
+                    <span>Responsive Design</span>
+                    <span>Figma</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 style="color: var(--neon); margin-bottom: 20px;">05. What's Next?</h2>
+        <h1 style="font-size: 3rem; margin-bottom: 20px;">Get In Touch</h1>
+        
+        <div class="contact-content">
+            <p>I am currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open!</p>
+            
+            <a href="mailto:your-email@example.com" class="btn-large">Let's Connect</a>
+
+            <div class="social-icons">
+                <a href="tel:+1234567890" title="Call Me"><i class="fas fa-phone"></i></a>
+                <a href="mailto:your-email@example.com" title="Email Me"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed & Built by [Your Name] &copy; 2025</p>
+    </footer>
 
 </body>
 </html>
